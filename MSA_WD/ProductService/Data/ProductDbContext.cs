@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductService.Models;
+using ProductAPI.Entities;
 
-namespace ProductService.Data
+namespace ProductAPI.Data
 {
     public class ProductDbContext:DbContext
     {
@@ -10,5 +10,6 @@ namespace ProductService.Data
 
         }
         public DbSet<Product> Products { get; set; }
-    }
+        public DbSet<Category>Categories { get; set; }
+     }
 }

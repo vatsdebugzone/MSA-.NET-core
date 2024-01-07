@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j1g1ozwrKINNZVbd4tvbCWklr4XxZArp1bN61Ikqmi1RDmcKYFc1eUo2sZx0vWKC+5glrZ3vb3P5s/yngkFW3g==",
+  "dgSpecHash": "Nkj+CBrgN9fh1X+u63uTpFnLZRf88MpZ5h2Yso3zO7rPhvQ9oNdydsl3cY8pxUEz0K63YSW4Kf0UP5KBEThlRQ==",
   "success": true,
-  "projectFilePath": "D:\\MSA_2024\\MSA_WD\\ProductService\\ProductService.csproj",
+  "projectFilePath": "D:\\MSA_2024\\MSA_WD\\ProductService\\ProductAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

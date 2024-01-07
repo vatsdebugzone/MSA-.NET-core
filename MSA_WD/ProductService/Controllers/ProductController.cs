@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductService.Data;
-using ProductService.Models;
+using ProductAPI.Data;
+using ProductAPI.Entities;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace ProductService.Controllers
+namespace ProductAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

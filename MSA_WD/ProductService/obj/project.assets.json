@@ -2275,9 +2275,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MSA_2024\\MSA_WD\\ProductService\\ProductService.csproj",
-      "projectName": "ProductService",
-      "projectPath": "D:\\MSA_2024\\MSA_WD\\ProductService\\ProductService.csproj",
+      "projectUniqueName": "D:\\MSA_2024\\MSA_WD\\ProductService\\ProductAPI.csproj",
+      "projectName": "ProductAPI",
+      "projectPath": "D:\\MSA_2024\\MSA_WD\\ProductService\\ProductAPI.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "D:\\MSA_2024\\MSA_WD\\ProductService\\obj\\",
       "projectStyle": "PackageReference",

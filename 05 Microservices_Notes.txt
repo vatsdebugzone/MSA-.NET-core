@@ -1,0 +1,8 @@
+Notes : We should never use models directly in case of microservices. 
+        We should you DTO (Data Transfer objects)
+
+       
+       Serivces: Implementations (Class that implement interface) : Product Service
+                 Create Interfaces inside Service Folder : IProductService
+       DTO: ProductDto
+       Mapper : ModelConverter (Here we are not using Automapper, it will do the same)

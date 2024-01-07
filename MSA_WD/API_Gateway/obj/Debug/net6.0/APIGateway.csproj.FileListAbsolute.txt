@@ -11,6 +11,8 @@ D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\IPAddressRange.dll
 D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
 D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
 D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\MSA_2024\MSA_WD\API_Gateway\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
