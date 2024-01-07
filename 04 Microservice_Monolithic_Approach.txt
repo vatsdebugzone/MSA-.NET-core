@@ -1,0 +1,37 @@
+Monolithic Architecture:
+   
+    All the codes are at same place (UI, API, Database)
+    you can't host the application untill all the code will be completed
+    
+
+
+    IRCTC Site : 20000000   User
+                  10000000  Want to fetch details
+                  1000000 want to book tickets (Server should not be down for the users)
+                
+
+    In Monolithic loads will be more (all the things are all at one place for book the tickert)
+    In Monolithic we need to provide resource to all at a time
+
+Microservice Architecture:  To overcome this problem we use Microservice Architecture
+                            Create Individual  Microservice  for Individual work
+
+                            There should be differnt models, services , repository for Individual work
+
+
+                            A Microservice has one repository
+
+                            Here we have divided individual module into a single microservice
+                            
+ Identity db is different
+
+API: It's an interface that provides communication between 2 applications
+ (train timing multiple sites)
+
+
+ SQL---> Follow Mapping  rules (Customer delete, delete the data) (use SQL --> Identity Server, 2 customer having same name)
+ No SQL---> Doesn't Follow Mapping rules  (Product with no sql)
+
+
+
+ Serive Bus : Used for Asynchronous communication among microservice
