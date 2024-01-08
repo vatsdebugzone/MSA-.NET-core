@@ -1,48 +1,65 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductService.Data;
-using ProductService.Models;
+using ProductAPI.DTO;
+using ProductAPI.Entities;
+using ProductAPI.Services;
+using ProductAPI.Helpers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace ProductService.Controllers
+namespace ProductAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductDbContext _productContext;
-        public ProductController(ProductDbContext productContext)
+        private  IProductService _service;
+        public ProductController(IProductService service)
         {
-            _productContext = productContext;
+            _service = service;
         }
         // GET: api/<ProductController>
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public async Task<IActionResult> Get()
         {
-            return _productContext.Products.ToList();
+            try
+            {
+                var products = await _service.GetAllProducts();
+                return this.ToApiResponse(products);
+            }
+            catch (Exception ex)
+            {
+                return this.ToApiErrorResponse(ex.Message);
+            }
         }
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return _productContext.Products.Where((product) => product.Id == id).FirstOrDefault();
+            try
+            {
+                var product = await _service.GetProductByIdAsync(id);
+                return this.ToApiResponse(product);
+            }
+            catch(Exception ex)
+            {
+                return this.ToApiErrorResponse(ex.Message);
+            }
         }
 
         // POST api/<ProductController>
         [HttpPost]
-        public IActionResult Post([FromBody] Product product)
+        public async Task<IActionResult> Post([FromBody] ProductDto product)
         {
             try
             {
-                _productContext.Products.Add(product);
-                _productContext.SaveChanges();
-                return StatusCode(StatusCodes.Status201Created);
+                var response=await _service.CreateUpdateProductAsync(product);
+                return this.ToApiResponse(product);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return this.ToApiErrorResponse(ex.Message);
+                //return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 

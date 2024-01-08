@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductAPI.Data;
 
@@ -10,9 +11,10 @@ using ProductAPI.Data;
 namespace ProductAPI.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    partial class ProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240107082657_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace ProductAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ProductAPI.Entities.Category", b =>
+            modelBuilder.Entity("ProductService.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,17 +42,9 @@ namespace ProductAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "It includes all electronic equipments TV, Freeze, Washing Machines etc.",
-                            Title = "Electronics"
-                        });
                 });
 
-            modelBuilder.Entity("ProductAPI.Entities.Product", b =>
+            modelBuilder.Entity("ProductService.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,31 +75,11 @@ namespace ProductAPI.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            Description = "MI 80 Cm (32 Inches) A Series Hd Ready Smart Google LED Tv L32M8-5Ain (Black)",
-                            ImageUrl = "https://m.media-amazon.com/images/I/713A5VksK6L._SX679_.jpg",
-                            Name = "MI LED",
-                            Price = 13000m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 1,
-                            Description = "Samtonic 80 cm (32 Inches) Full HD Smart Android LED TV | Powerful Audio Box Speakers | HDMI & USB Ports | Voice Remote (Black, 2023 Model)",
-                            ImageUrl = "https://m.media-amazon.com/images/I/411dUvxz1+L._SX679_.jpg",
-                            Name = "Samtonic LED",
-                            Price = 10000m
-                        });
                 });
 
-            modelBuilder.Entity("ProductAPI.Entities.Product", b =>
+            modelBuilder.Entity("ProductService.Entities.Product", b =>
                 {
-                    b.HasOne("ProductAPI.Entities.Category", "Category")
+                    b.HasOne("ProductService.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

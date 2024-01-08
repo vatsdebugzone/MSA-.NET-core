@@ -1,18 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProductAPI.Entities;
-
-namespace ProductAPI.Data
-{
-    public class ProductDbContext : DbContext
-    {
-        public ProductDbContext(DbContextOptions<ProductDbContext> option) : base(option)
-        {
-
-        }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Category> Categories { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+      //Data Migration Code
+      protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(
@@ -43,5 +30,9 @@ namespace ProductAPI.Data
                 CategoryId = 1
             });
         }
-    }
-}
+    
+
+    Use this code in ProductDbContext for dummy data insertion in database.
+
+    Step: Run the add migration command
+    Step : Run the update database command
