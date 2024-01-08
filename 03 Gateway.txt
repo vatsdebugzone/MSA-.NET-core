@@ -1,0 +1,58 @@
+Step : Create New Project --> Asp.net Core Empty
+Step : Add a json file with named as ocelot.json (mandatory)
+
+ Here we will create upstream & downstream
+
+ upstream : contains the Gateway path
+ downstream : contains the Microservice path
+
+ Step : Add nuget package (ocelot by tom pallister)
+
+ocelot work as middleware 
+Open the program.cs and write some ocelot details 
+
+//Program.cs
+                                
+                using Ocelot.DependencyInjection;
+                using Ocelot.Middleware;
+
+                var builder = WebApplication.CreateBuilder(args);
+                builder.Configuration.AddJsonFile("ocelot.json");
+                builder.Services.AddOcelot();
+                var app = builder.Build();
+
+                app.MapGet("/", () => "Hello World!");
+                app.UseOcelot().Wait();
+
+                app.Run();
+
+
+
+
+    //ocelot.json
+    
+                {
+                "Routes": [
+                    {
+
+                    "DownstreamPathTemplate": "/api/product",
+                    "DownstreamScheme": "https",
+                    "DownstreamHostAndPorts": [
+                        {
+                        "Host": "localhost",
+                        "Port": 7079
+                        }
+                    ],
+
+                    "UpstreamPathTemplate": "/product",
+                    "UpstreamHttpMethod": [ "Get" ]
+
+                    }
+                ]
+                }
+
+
+  Note :   Need to run both the projects at same time (Main Soluton : Properties-->Select multiple projects)  
+
+
+

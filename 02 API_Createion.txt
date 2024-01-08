@@ -1,0 +1,74 @@
+Step 1 : Create a blank solution  EX: MSA_WD
+Step 2: Create a API Project (Asp .Net Core Web API) Ex:Product
+
+Remove the existing WeatherForecast Controller and it's dependency
+
+Note : Every Microservice has an individual database  and each Microservice has individual responsibility
+
+Create  folder insider API Project -->  Data   
+                                        Models
+
+Create a DBContext Class inside Data Folder named as in my case ----> ProductDbContext
+Install EntityFrameworkCore dependency (6.0) Add->Manage Nuget Packages -> Entity Framework 6.0
+
+// Step
+
+using Microsoft.EntityFrameworkCore;
+
+namespace ProductService.Data
+{
+    public class ProductDbContext:DbContext
+    {
+        public ProductDbContext(DbContextOptions<ProductDbContext> option):base(option)
+        {
+
+        }
+    }
+}
+
+Step : Create a model (class) inside Model foder named as Products (assign some property) Product.case
+Step : Add the Product file in DbContext Files
+
+Step : create connection string in  appsettings.json
+
+ "ConnectionStrings": {
+    "AppConnection": "Server=DESKTOP-QCL5KPJ;Database=Product_Microservice;Trusted_Connection=true;MultipleActiveResultSets=true"
+  },
+
+
+        Notes:         Database can be of SQL or No SQL when we integrated more services (It's depend on requirements)
+
+        Notes:        All the microservices are connected through a gateway and gateway provide the access to microservices
+                     (ocelot gateway provided by Microsoft (Open Source))
+
+
+ Add SQL Server Connections (Add sql server dependency from Nuget Packages) Microsoft.EntityFrameworkCore.SqlServer
+
+ // Add services to the container. (Program.cs)
+builder.Services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnection")));
+
+
+Step: Create a Controller with read/write operation (MVC Controller read/write --> API Controller read/write)
+
+            ProductController.cs 
+
+
+  Step :  Add Migration          Install (Microsoft.EntityFrameworkCore.Tools)
+         Tools --->Nuget Package Manager -> Package Manager Console (run the command) 
+            add-migration Initial
+            update-database
+
+  Step : Run the solution
+  Step : Open the postman 
+                      Get   Test Case (https://localhost:7079/api/product) 
+                      Post  Test Case  (Post request in postman --- > body--raw , media type : json, (https://localhost:7079/api/product))      
+
+                           {
+                            "name":"Apple Watch",
+                            "description": "Apple 101 Smart Watch Extreme Edition",
+                            "price":25000
+                            }
+
+
+
+
