@@ -50,7 +50,7 @@ namespace ProductAPI.Services.Implementations
 
         public async Task<ProductDto> GetProductByIdAsync(int id)
         {
-            var product = await _context.Products.Select((product) => ModelConverter.ModelToDto(product)).Where((product) => product.Id == id).FirstOrDefaultAsync();
+            var product = await _context.Products.Where((product) => product.Id == id).Select((product) => ModelConverter.ModelToDto(product)).FirstOrDefaultAsync();
             return product;
         }
     }
